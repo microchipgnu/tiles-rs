@@ -1,6 +1,6 @@
-# tiles-rs: Tile Map Generator and Renderer
+# tiles-rs
 
-This project demonstrates a tile map generator and renderer built with Rust, utilizing `ggez` for rendering and `rusqlite` for storing the generated maps in a SQLite database. It features dynamic map generation, where users can regenerate and store maps with a simple key press.
+This project demonstrates a **tile map generator and renderer** built with Rust, utilizing `ggez` for rendering and `rusqlite` for storing the generated maps in a SQLite database. It features dynamic map generation, where users can regenerate and store maps with a simple key press.
 
 ![](./assets/image.gif)
 
