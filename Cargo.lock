@@ -2613,6 +2613,7 @@ dependencies = [
  "ggez",
  "noise",
  "rand 0.8.5",
+ "rayon",
  "rusqlite",
 ]
 

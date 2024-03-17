@@ -12,7 +12,7 @@ struct GameState {
 
 impl GameState {
     fn new(ctx: &mut Context) -> GameResult<GameState> {
-        let map = generate_map(20, 20); // Large map for demonstration
+        let map = generate_map(100, 100); // Large map for demonstration
         Ok(GameState { map })
     }
 
@@ -83,7 +83,7 @@ impl event::EventHandler<ggez::GameError> for GameState {
     ) {
         if keycode == event::KeyCode::R {
             // Regenerate the map when 'R' key is pressed
-            self.map = map_generator::generate_map(20, 20);
+            self.map = map_generator::generate_map(100, 100);
             // Optionally, you can also clear and redraw the canvas here if necessary
             match db::store_map_in_db(&self.map) {
                 Ok(_) => println!("Map regenerated and stored successfully."),
@@ -99,7 +99,7 @@ impl event::EventHandler<ggez::GameError> for GameState {
 fn main() -> GameResult {
     let (mut ctx, event_loop) = ContextBuilder::new("tiles-rs", "")
         .window_setup(conf::WindowSetup::default().title("Tile Map"))
-        .window_mode(conf::WindowMode::default().dimensions(500.0, 500.0))
+        .window_mode(conf::WindowMode::default().dimensions(1000.0, 1000.0))
         .build()?;
 
     let state = GameState::new(&mut ctx)?;
