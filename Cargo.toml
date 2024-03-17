@@ -1,0 +1,10 @@
+[package]
+name = "tiles-rs"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rusqlite = "0.28.0"
+ggez = "0.7.0"
+noise = "0.7.0"
+rand = "0.8.5" 
