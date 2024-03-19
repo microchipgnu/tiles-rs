@@ -15,6 +15,7 @@ pub fn generate_map(width: usize, height: usize) -> Map {
             let noise_value = perlin.get([x as f64 * noise_scale + noise_offset_x, y as f64 * noise_scale + noise_offset_y]);
             Tile {
                 biome: if noise_value < -0.1 { Biome::Water } else if noise_value < 0.2 { Biome::Forest } else { Biome::Desert },
+                altitude: noise_value, // Use noise value as altitude for simplicity
             }
         }).collect()
     }).collect();

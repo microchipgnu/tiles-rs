@@ -8,6 +8,7 @@ pub enum Biome {
 #[derive(Clone, Copy, Debug)]
 pub struct Tile {
     pub biome: Biome,
+    pub altitude: f64,
 }
 
 

@@ -1,4 +1,4 @@
-use crate::tiles::{Map, Biome};
+use crate::tiles::{Map};
 use rusqlite::{params, Connection, Result};
 
 pub fn store_map_in_db(map: &Map) -> Result<()> {
@@ -10,7 +10,8 @@ pub fn store_map_in_db(map: &Map) -> Result<()> {
             id INTEGER PRIMARY KEY,
             x INTEGER NOT NULL,
             y INTEGER NOT NULL,
-            biome TEXT NOT NULL
+            biome TEXT NOT NULL,
+            altitude REAL NOT NULL
         )",
         [],
     )?;
@@ -20,11 +21,11 @@ pub fn store_map_in_db(map: &Map) -> Result<()> {
 
     {
         // Prepare the SQL statement within its own scope
-        let mut stmt = tx.prepare("INSERT INTO tile (x, y, biome) VALUES (?1, ?2, ?3)")?;
+        let mut stmt = tx.prepare("INSERT INTO tile (x, y, biome, altitude) VALUES (?1, ?2, ?3, ?4)")?;
 
         for (y, row) in map.tiles.iter().enumerate() {
             for (x, tile) in row.iter().enumerate() {
-                stmt.execute(params![x as i32, y as i32, format!("{:?}", tile.biome)])?;
+                stmt.execute(params![x as i32, y as i32, format!("{:?}", tile.biome), format!("{:?}", tile.altitude)])?;
             }
         }
     } // Statement `stmt` goes out of scope here, so it's dropped before committing.
